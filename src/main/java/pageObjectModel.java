@@ -18,7 +18,6 @@ public class pageObjectModel {
     String cvv = "//div[@class='field form-group']//input[@name='cvvno']";
     String email = "//form[@id='payment-form']//input[@name='txtEmail']";
     String paymentSubmit = "//div[@id='card']//div[6]//div[1]";
-
     String loginId = "//input[@id='usrname']";
     String loginpwd = "//input[@id='psw']";
     String accessLink = "//a[contains(text(),'Acceso')]";
@@ -28,7 +27,7 @@ public class pageObjectModel {
     public pageObjectModel(WebDriver driver) {
         this.driver = driver;
     }
-
+    // Function to put recharge details
     public void fillEndUserNumberToRecharge(String phoneNumber){
         driver.findElement(By.xpath(operator)).click();
         driver.findElement(By.xpath(telcel)).click();
@@ -38,7 +37,7 @@ public class pageObjectModel {
         driver.findElement(By.xpath(recharge10Dollar)).click();
         driver.findElement(By.xpath(submitButton)).click();
     }
-
+    // Function to provide end user's payment details
     public void performPayment(String pname, String pcardNumber,String pmonth, String pdate, String pcvv, String pemail){
         driver.findElement(By.xpath(name)).sendKeys(pname);
         driver.findElement(By.xpath(cardNumber)).sendKeys(pcardNumber);
@@ -48,7 +47,7 @@ public class pageObjectModel {
         driver.findElement(By.xpath(email)).sendKeys(pemail);
         driver.findElement(By.xpath(paymentSubmit)).click();
     }
-
+    // Function to perform login post payment function
     public void login(String id, String pwd){
         driver.findElement(By.xpath(loginId)).sendKeys(id);
         driver.findElement(By.xpath(loginpwd)).sendKeys(pwd);

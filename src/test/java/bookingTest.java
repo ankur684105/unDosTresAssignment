@@ -10,20 +10,25 @@ import java.util.concurrent.TimeUnit;
 public class bookingTest {
     WebDriver driver;
     pageObjectModel pom;
+
+    // WebDriver setup
     @BeforeClass
     public void setup(){
         WebDriverManager.chromedriver().setup();
         driver = new ChromeDriver();
         pom = new pageObjectModel(driver);
     }
+    // Post test execution process
     @AfterClass
     public void setupRemove(){
         driver.quit();
     }
+    // Function to use Data Driven approach
     @DataProvider(name = "data-provider")
     public Object[][] dataProviderMethod1() {
         return new Object[][] { {"5523261151","Test","4111111111111111","11","2025","111","test@test.com"}};
     }
+    // Test Function
     @Test(dataProvider = "data-provider")
     public void endToEndFunctionalTest(String phoneNumber, String name, String card, String month, String date, String cvv, String email){
         try {
